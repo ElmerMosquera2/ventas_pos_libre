@@ -1,0 +1,126 @@
+/* 1. RESET Y BASE */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-sidebar: #1e1e2d;
+    --bg-main: #f5f7f9;
+    --font-main: 'Segoe UI', system-ui;
+    --accent: #007bff;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --sidebar-width: 260px;
+    --sidebar-width-table: 200px;
+    --header-height: 60px;
+    --gap: 20px;
+    --gap-min: 10px;
+    --transition: all 0.3s ease;
+}
+
+.body {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    font-family: var(--font-main), sans-serif;
+}
+
+.header {
+    height: var(--header-height);
+    background-color: var(--bg-sidebar);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    .title {
+        display: none;
+    }
+    .title--highlight {
+        color: var(--accent);
+    }
+    a {
+        color: var(--text-light);
+    }
+}
+
+.nav-index {
+    display: flex;
+    gap: var(--gap);
+}
+
+.navUl-index {
+    list-style: none;
+    display: flex;
+    gap: var(--gap);
+}
+
+/*.navUlLi-index {}*/
+
+.navUlLi-index a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    color: #a2a3b7;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+    .navUlLiLinkText-index {
+        display: none;
+    }
+}
+
+.navUlLi-index a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--text-light);
+}
+
+.perfil-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-min);
+}
+
+@media (width > 600px) {
+    .body {
+        height: 100vh;
+        min-height: 420px;
+        grid-template-columns: var(--sidebar-width-table) 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .header {
+        padding: var(--gap);
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+        .title {
+            display: inline-block;
+        }
+        .nav-index, .navUl-index {
+            flex-direction: column;
+        }
+    }
+    .nav-index {
+        height: 70%;
+        justify-content: space-around;
+    }
+
+    .navUlLi-index a {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--gap);
+        justify-content: left;
+        .navUlLiLinkText-index {
+            display: inline-block;
+        }
+    }
+}

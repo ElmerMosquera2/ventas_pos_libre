@@ -1,0 +1,11 @@
+{
+  "name": "VentasPos77",
+  "version": "1.0.0",
+  "description": "Este es un app web de gestion de invetarios y ventas de un negocio. Es un proyecto de aprendizaje, pero que lleva el toque especial de la abuela",
+  "type": "module",
+  "main": "src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true
+}
