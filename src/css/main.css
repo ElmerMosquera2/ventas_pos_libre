@@ -25,7 +25,6 @@
     max-width: 100%;
     min-height: 100%;
     display: grid;
-    grid-template-rows: 1fr 1fr;
     font-family: var(--font-main), sans-serif;
 }
 
@@ -92,6 +91,15 @@
     background-color: rgba(255,255,255,0.1);
 }
 
+.error-visor {
+    color: #d32f2f;
+    padding: 1rem;
+    border-left: 4px solid currentColor;
+    background: #fafafa;
+    font-family: sans-serif;
+}
+
+
 @media (width > 600px) {
     .body {
         height: 100vh;
@@ -128,3 +136,4 @@
         }
     }
 }
+
