@@ -85,7 +85,7 @@ async function renderizarVista(key, contenedor, coleccion) {
         const etiqueta = configuracion.etiqueta || configuracion;
         const componente = document.createElement(etiqueta);
 
-        // 4. Inyección atómica (reemplaza todo el contenido de golpe)
+        // 4. Inyección atómica
         contenedor.replaceChildren(componente);
 
     } catch (error) {
