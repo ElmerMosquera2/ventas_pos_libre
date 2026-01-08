@@ -3,19 +3,23 @@ import { onlineStateActionExclusive } from '../../js/localLib.js';
 /**
  * @param {Proxy} appState - Estado de la app.
  * @param {string} propiedadEstado - Propiedad que controla la vista.
- * @param {HTMLElement} contenedorVisor - Donde se renderiza.
- * @param {string} navId - ID del <nav>.
+ * @param {HTMLElement} contenedorVisor - Elemento donde se renderiza.
+ * @param {HTMLElement} navInput - Elemento que apunta.
  * @param {Object} coleccion - Mapa de vistas.
  */
 export function inicializarSuperNav(
     appState,
     propiedadEstado,
     contenedorVisor,
-    navId,
+    navInput,
     coleccion
 ) {
-    const nav = document.getElementById(navId);
-    if (!nav) return;
+    const nav = navInput;
+
+    if (!nav) {
+        console.error('SuperNav Error: No se encontró el elemento nav', navInput);
+        return;
+    }
 
     // 1. EVENTO: Solo muta el estado
     nav.addEventListener('click', (e) => {
