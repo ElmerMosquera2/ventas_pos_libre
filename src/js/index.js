@@ -5,7 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const visor = document.getElementById('main');
 
     // Inicializamos el Nav principal apuntando a la propiedad 'vista'
-    inicializarSuperNav(appState, visor, coleccionVistas, "nav-index", "vista");
+    inicializarSuperNav(
+        appState,
+        "vista",
+        visor,
+        "nav-index",
+        coleccionVistas
+    );
 
     // Si tuvieras un nav interno, lo inicializas aquí mismo:
     // inicializarSuperNav(appState, visorInterno, coleccionVentaInterna, "nav-ventas", "subVistaVentas");
