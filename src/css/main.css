@@ -88,6 +88,10 @@
     gap: var(--gap-min);
 }
 
+.navLink--activo {
+    background-color: rgba(255,255,255,0.1);
+}
+
 @media (width > 600px) {
     .body {
         height: 100vh;
@@ -103,6 +107,7 @@
         justify-content: space-between;
         .title {
             display: inline-block;
+            text-align: center;
         }
         .nav-index, .navUl-index {
             flex-direction: column;
