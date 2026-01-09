@@ -22,7 +22,7 @@ export const coleccionVistas = {
     },
     estadisticas: {
         etiqueta: 'vista-estadisticas',
-        importar: './estadisticas/estadisticas.js'
+        importar: './estadisticas/Estadisticas.js'
     }
 };
 
