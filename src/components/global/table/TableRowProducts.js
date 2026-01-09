@@ -1,5 +1,5 @@
 // Debe retornar un elemento HTML para que el elmento custom + la funcion de filtro muestre los datos
-export const TableRow = ({ codigo, nombre, precio }) => {
+export const TableRowProducts = ({ codigo, nombre, precio }) => {
   const tr = document.createElement('tr');
   tr.classList.add('table-row');
 
