@@ -1,4 +1,4 @@
-export class TransaccionesVentas extends HTMLElement {
+export class TransaccionVentas extends HTMLElement {
     constructor() {
         super();
         // 1. Creamos el Shadow Root (modo 'open' para permitir acceso si es necesario)
@@ -14,7 +14,7 @@ export class TransaccionesVentas extends HTMLElement {
         this.shadowRoot.replaceChildren();
 
         const pElemento = document.createElement('p')
-        pElemento.textContent = 'Hola desde transacciones de ventas'
+        pElemento.textContent = 'Hola desde transaccion de ventas'
 
         this.shadowRoot.appendChild(pElemento)
 
@@ -22,4 +22,4 @@ export class TransaccionesVentas extends HTMLElement {
 }
 
 // Registramos el elemento
-customElements.define('transacciones-ventas', TransaccionesVentas);
+customElements.define('transaccion-ventas', TransaccionVentas);
