@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-firstSub {
+    width: 90%; /* Cambiado de 80% para dar más aire en pantallas medianas */
+    max-width: 1200px; /* Evita que se estire demasiado en pantallas Ultra-Wide */
+    min-height: 60px; /* min-height en lugar de height fija para contenido dinámico */
+    display: grid;
+    background-color: #1e1e2d;
+    /* Usamos fracciones flexibles */
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas: "navList title";
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    color: #fff;
+    padding: 0 1.5rem;
+}
+
+/* --- Adaptabilidad con Media Queries --- */
+
+@media (max-width: 768px) {
+    .nav-firstSub {
+        width: 100%;
+        border-radius: 0;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "title"
+            "navList";
+        padding: 1rem;
+    }
+
+    .navUl-firstSub {
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+}
+
+/* --- Estilos de contenido --- */
+
+.title-firstSub {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navUl-firstSub {
+    grid-area: navList;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.navUlLiLink-firstSub {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: #a2a3b7;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.navUlLiLink-firstSub:hover{
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    cursor: pointer;
+}
+
+.navLink--activo {
+    background-color: rgba(255,255,255,0.1);
+}

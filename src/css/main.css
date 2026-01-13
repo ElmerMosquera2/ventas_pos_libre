@@ -80,6 +80,10 @@
     color: var(--text-light);
 }
 
+.navUlLi-index a:active {
+    transform: scale(0.92); /* Se encoge un poco */
+}
+
 .perfil-index {
     display: flex;
     align-items: center;

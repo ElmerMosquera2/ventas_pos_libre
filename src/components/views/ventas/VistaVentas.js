@@ -1,5 +1,6 @@
 import { inicializarSuperNav } from "../manejoSuperNav.js";
 import { appState, subColeccionVistasVentas } from "../hookNavs.js";
+import stylesFirstSub from '../../../css/firstSub.css' with { type: 'css' };
 
 
 export class VistaVentas extends HTMLElement {
@@ -16,24 +17,25 @@ export class VistaVentas extends HTMLElement {
 
     render() {
         this.shadowRoot.replaceChildren();
+        this.shadowRoot.adoptedStyleSheets = [stylesFirstSub];
 
         // 1. Configuración de datos (Fácil de mantener y escalar)
         const menuConfig = [
-            { label: 'Transacciones', link: 'transacciones' },
-            { label: 'Registro',      link: 'registro'      }
+            { label: 'Transaccion', link: 'transaccion' },
+            { label: 'Registro', link: 'registro'}
         ];
 
         // 2. Creación de los contenedores principales
-        const navVentas = document.createElement('nav');
-        navVentas.id = 'nav-ventas';
-        navVentas.className = 'nav-firstSub';
+        const nav = document.createElement('nav');
+        nav.id = 'nav-ventas';
+        nav.className = 'nav-firstSub';
 
-        const tituloVentas = document.createElement('h1');
-        tituloVentas.className = 'title-firstSub';
-        tituloVentas.textContent = 'Ventas';
+        const title = document.createElement('h1');
+        title.className = 'title-firstSub';
+        title.textContent = 'Ventas';
 
-        const navUlVentas = document.createElement('ul');
-        navUlVentas.className = 'navUl-firstSub';
+        const navUl = document.createElement('ul');
+        navUl.className = 'navUl-firstSub';
 
         // 3. Mapeo de ítems (Transformación de datos a elementos)
         const items = menuConfig.map(item => {
@@ -51,15 +53,15 @@ export class VistaVentas extends HTMLElement {
 
         // 4. Inserción eficiente
         // .append() permite insertar múltiples hijos de una vez y acepta el spread operator
-        navUlVentas.append(...items);
-        navVentas.append(tituloVentas, navUlVentas);
+        navUl.append(...items);
+        nav.append(title, navUl);
 
-        const containerVentas = document.createElement('div');
-        containerVentas.id = 'container-ventas';
-        containerVentas.className = 'main-firstSub';
+        const container = document.createElement('div');
+        container.id = 'container-ventas';
+        container.className = 'main-firstSub';
 
         // 5. Inserción final al Shadow Root
-        this.shadowRoot.append(navVentas, containerVentas);
+        this.shadowRoot.append(nav, container);
     }
 
     configurarSubNavegacion() {
