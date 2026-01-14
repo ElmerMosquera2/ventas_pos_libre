@@ -1,4 +1,5 @@
 import { onlineStateActionExclusive } from '../../js/localLib.js';
+import { renderizarVista } from '../../renderAsync.js';
 
 /**
  * @param {Proxy} appState - Estado de la app.
@@ -114,62 +115,4 @@ function manageClassCssLinkNavActive(nav, valorActual) {
         }
     });
 }
-
-/**
- * Carga y renderiza dinámicamente una vista basada en una clave (key) y una colección de configuraciones.
- * Utiliza lazy loading (carga perezosa) para importar módulos solo cuando son necesarios.
- *
- * @param {string} key - La clave que identifica la vista específica en la colección.
- * @param {HTMLElement} contenedor - El elemento DOM donde se inyectará la vista.
- * @param {object} coleccion - Un objeto que mapea las claves a sus configuraciones de vista.
- */
-async function renderizarVista(key, contenedor, coleccion) {
-    // Si el contenedor no existe, la función termina silenciosamente para evitar errores.
-    if (!contenedor) return;
-
-    const configuracion = coleccion?.[key];
-
-    // 1. Manejo de llave inexistente: Si la clave no está definida, muestra un error en la UI.
-    if (!configuracion) {
-        // Asume que 'inyectarErrorUI' es una función definida globalmente para mostrar mensajes de error al usuario.
-        return inyectarErrorUI(contenedor, `La vista "${key}" no está definida en la colección.`);
-    }
-
-    try {
-        // 2. Carga dinámica del módulo (Code Splitting):
-        // Si la configuración tiene una ruta de importación, espera a cargar el JS del componente.
-        if (configuracion.importar) {
-            // Esto es un 'lazy load' (carga perezosa): el código JS se descarga del servidor AHORA, no antes.
-            await import(configuracion.importar);
-        }
-
-        // 3. Creación del elemento:
-        // Determina el nombre de la etiqueta HTML (ej. 'mi-componente-personalizado').
-        const etiqueta = configuracion.etiqueta || configuracion;
-        // Crea la instancia del elemento DOM real.
-        const componente = document.createElement(etiqueta);
-
-        // 4. Inyección atómica: Reemplaza de forma eficiente y limpia
-        // el contenido anterior del contenedor por el nuevo componente.
-        contenedor.replaceChildren(componente);
-
-    } catch (error) {
-        // Captura errores de red durante la importación (si el archivo JS no carga)
-        // o errores durante la creación del elemento.
-        console.error(`[RenderizarVista] Error al cargar la llave: ${key}`, error);
-        inyectarErrorUI(contenedor, 'Error de red o de carga del componente.');
-    }
-}
-
-/**
- * Función auxiliar interna para consistencia visual en errores
- */
-function inyectarErrorUI(contenedor, mensaje) {
-    contenedor.replaceChildren();
-    const p = document.createElement('p');
-    p.textContent = mensaje;
-    p.classList.add('error-visor'); // Usa clases para estilo en lugar de estilos inline
-    contenedor.appendChild(p);
-}
-
 
