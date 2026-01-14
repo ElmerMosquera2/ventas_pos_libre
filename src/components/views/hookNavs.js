@@ -13,30 +13,30 @@ export const appState = crearEstado({
 export const coleccionVistas = {
     inicio: {
         etiqueta: 'vista-inicio',
-        importar: './inicio/VistaInicio.js'
+        importar: './components/views/inicio/VistaInicio.js'
     },
     ventas: {
         etiqueta: 'vista-ventas',
-        importar: './ventas/VistaVentas.js'
+        importar: './components/views/ventas/VistaVentas.js'
     },
     inventario: {
         etiqueta: 'vista-inventario',
-        importar: './inventario/VistaInventario.js'
+        importar: './components/views/inventario/VistaInventario.js'
     },
     estadisticas: {
         etiqueta: 'vista-estadisticas',
-        importar: './estadisticas/Estadisticas.js'
+        importar: './components/views/estadisticas/Estadisticas.js'
     }
 };
 
 export const subColeccionVistasInicio = {
     resumen: {
         etiqueta: 'resumen-inicio',
-        importar: './inicio/inicioComponents/ResumenInicio.js'
+        importar: './components/views/inicio/inicioComponents/ResumenInicio.js'
     },
     notificaciones: {
         etiqueta: 'notificaciones-inicio',
-        importar: './inicio/inicioComponents/NotificacionesInicio.js'
+        importar: './components/views/inicio/inicioComponents/NotificacionesInicio.js'
     },
 
 }
@@ -44,11 +44,11 @@ export const subColeccionVistasInicio = {
 export const subColeccionVistasVentas = {
     transaccion: {
         etiqueta: 'transaccion-ventas',
-        importar: './ventas/ventasComponents/TransaccionVentas.js'
+        importar: './components/views/ventas/ventasComponents/TransaccionVentas.js'
     },
     registro: {
         etiqueta: 'registro-ventas',
-        importar: './ventas/ventasComponents/RegistroVentas.js'
+        importar: './components/views/ventas/ventasComponents/RegistroVentas.js'
     },
 
 }
@@ -56,15 +56,15 @@ export const subColeccionVistasVentas = {
 export const subColeccionVistaInventario = {
     productos: {
         etiqueta: 'productos-inventario',
-        importar: './inventario/inventarioComponents/ProductosInventario.js'
+        importar: './components/views/inventario/inventarioComponents/ProductosInventario.js'
     },
     actualizarValorProducto: {
         etiqueta: 'actualizar-valor-inventario',
-        importar: './inventario/inventarioComponents/ActualizarValorProductoInventario.js'
+        importar: './components/views/inventario/inventarioComponents/ActualizarValorProductoInventario.js'
     },
     ofertas: {
         etiqueta: 'ofertas-inventario',
-        importar: './inventario/inventarioComponents/OfertasInventario.js'
+        importar: './components/views/inventario/inventarioComponents/OfertasInventario.js'
     },
 
 }
@@ -72,14 +72,14 @@ export const subColeccionVistaInventario = {
 export const subColeccionVistaEstadisticas = {
     masVendidos: {
         etiqueta: 'mas-vendidos-estadisticas',
-        importar: './estadisticas/estadisticasComponents/MasVendidosEstadisticas.js'
+        importar: './components/views/estadisticas/estadisticasComponents/MasVendidosEstadisticas.js'
     },
     tendencia: {
         etiqueta: 'tendencia-estadisticas',
-        importar: './estadisticas/estadisticasComponents/TendenciaEstadisticas.js'
+        importar: './components/views/estadisticas/estadisticasComponents/TendenciaEstadisticas.js'
     },
     horasPico: {
         etiqueta: 'horas-pico-estadisticas',
-        importar: './estadisticas/estadisticasComponents/HorasPicoEstadisticas.js'
+        importar: './components/views/estadisticas/estadisticasComponents/HorasPicoEstadisticas.js'
     },
 }
