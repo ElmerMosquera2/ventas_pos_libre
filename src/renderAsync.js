@@ -1,4 +1,4 @@
-import { inyectarContenido } from './js/utilis.js'
+import { inyectarNodo, msgNodeHTMLError} from './js/utilis.js'
 
 /**
  * Carga y renderiza dinámicamente una vista basada en una clave (key) y una colección de configuraciones.
@@ -16,10 +16,8 @@ export async function renderizarVista(key, contenedor, coleccion, reemplazar = t
 
     const configuracion = coleccion?.[key];
 
-    // 1. Manejo de llave inexistente: Si la clave no está definida, muestra un error en la UI.
     if (!configuracion) {
-        // Asume que 'inyectarErrorUI' es una función definida globalmente para mostrar mensajes de error al usuario.
-        return inyectarContenido(contenedor, `La vista "${key}" no está definida en la colección.`, reemplazar);
+        return inyectarNodo(contenedor, msgNodeHTMLError(`La vista "${key}" no está definida en la colección.`), reemplazar);
     }
 
     try {
@@ -37,12 +35,13 @@ export async function renderizarVista(key, contenedor, coleccion, reemplazar = t
         const componente = document.createElement(etiqueta);
 
         // 4. Inyección atómica
-        contenedor.replaceChildren(componente);
+
+        inyectarNodo(contenedor, componente, reemplazar);
 
     } catch (error) {
         // Captura errores de red durante la importación (si el archivo JS no carga)
         // o errores durante la creación del elemento.
         console.error(`[RenderizarVista] Error al cargar la llave: ${key}`, error);
-        inyectarContenido(contenedor, 'Error de red o de carga del componente.', reemplazar);
+        inyectarNodo(contenedor, msgNodeHTMLError('Error de red o de carga del componente.'), reemplazar);
     }
 }
